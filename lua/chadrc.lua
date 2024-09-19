@@ -21,7 +21,6 @@ M.mason.pkgs = { -- put your mason packges here
   "clangd",
   "clang-format",
   "pyright",
-  "mypy",
   "black",
   "ruff-lsp",
 }
