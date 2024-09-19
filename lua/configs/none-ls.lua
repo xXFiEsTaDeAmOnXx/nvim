@@ -5,7 +5,6 @@ local opts = {
   sources = {
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.black,
-    null_ls.builtins.diagnostics.mypy,
   },
   on_attach = function(clinet, bufnr)
     if clinet.supports_method "textDocument/formatting" then

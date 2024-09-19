@@ -12,22 +12,6 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "sumneko_lua",
-        "stylua",
-        "rust-analyzer",
-        "clangd",
-        "clang-format",
-        "pyright",
-        "mypy",
-        "black",
-        "ruff-lsp",
-      },
-    },
-  },
-  {
     "rust-lang/rust.vim",
     ft = "rust",
     init = function()
