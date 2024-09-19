@@ -15,6 +15,8 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "sumneko_lua",
+        "stylua",
         "rust-analyzer",
         "clangd",
         "clang-format",
