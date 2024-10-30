@@ -46,3 +46,44 @@ lspconfig.ruff_lsp.setup {
   capabilities = nvlsp.capabilities,
   filetypes = { "python" },
 }
+
+lspconfig.ltex.setup {
+  settings = {
+    ltex = {
+      language = "en-US",
+    },
+  },
+  on_attach = function(client, bufnr)
+    -- Mappings
+    local ltex_mappings = {
+      n = {
+        -- LSP Diagnostics
+        ["<leader>ll"] = {
+          "<cmd> VimtexCompile <CR>",
+          { desc = "Start LaTeX Compiler" },
+        },
+        ["<leader>lo"] = {
+          "<cmd> VimtexCompileOutput <CR>",
+          { desc = "Show Compiler Output" },
+        },
+        ["<leader>le"] = {
+          "<cmd> VimtexErrors <CR>",
+          { desc = "Start LaTeX Compiler" },
+        },
+        ["<leader>lv"] = {
+          "<cmd> VimtexView <CR>",
+          { desc = "Start LaTeX Compiler" },
+        },
+      },
+    }
+    local opts = { buffer = bufnr, silent = true }
+    for mode, maps in pairs(ltex_mappings) do
+      for key, val in pairs(maps) do
+        -- Merge opts with the keymap options
+        local key_opts = vim.tbl_extend("force", opts, val[2] or {})
+        vim.keymap.set(mode, key, val[1], key_opts)
+      end
+    end
+    nvlsp.on_attach(client, bufnr)
+  end,
+}

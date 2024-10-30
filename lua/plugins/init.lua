@@ -20,19 +20,13 @@ return {
   },
   {
     "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
     ft = {
       "tex",
       "bib",
     },
     init = function()
       require "configs.vimtex"
-    end,
-  },
-  {
-    "rhysd/vim-grammarous",
-    lazy = false,
-    init = function()
-      require "configs.grammarous"
     end,
   },
   {

@@ -25,6 +25,8 @@ M.mason = {
     "black",
     "ruff-lsp",
     "debugpy", -- Python Debugger
+    "ltex-ls", -- Spelling LSP
+    "latexindent", -- LaTeX formatter
   },
 }
 
