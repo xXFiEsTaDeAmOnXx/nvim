@@ -67,7 +67,7 @@ return {
     "folke/trouble.nvim",
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
-    keys =  require "configs.trouble" ,
+    keys = require "configs.trouble",
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required

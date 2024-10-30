@@ -14,15 +14,17 @@ M.base46 = {
   -- },
 }
 
-M.mason.pkgs = { -- put your mason packges here
-  "sumneko_lua",
-  "stylua",
-  "rust-analyzer",
-  "clangd",
-  "clang-format",
-  "pyright",
-  "black",
-  "ruff-lsp",
+M.mason = {
+  cmd = true,
+  pkgs = { -- put your mason packges here
+    "stylua",
+    "rust-analyzer",
+    "clangd",
+    "clang-format",
+    "pyright",
+    "black",
+    "ruff-lsp",
+  },
 }
 
 return M
