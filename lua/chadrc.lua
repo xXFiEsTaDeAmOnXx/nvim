@@ -24,6 +24,7 @@ M.mason = {
     "pyright",
     "black",
     "ruff-lsp",
+    "debugpy", -- Python Debugger
   },
 }
 
