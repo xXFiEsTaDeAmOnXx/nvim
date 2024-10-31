@@ -37,28 +37,28 @@ local debugger_mappings = {
     },
     ["<leader>dr"] = {
       function()
-        require("dap").continiue()
+        require("dap").continue()
       end,
       { desc = "Start or continiue the debugger" },
     },
 
     ["<leader>dsov"] = {
       function()
-        require("dap").setp_over()
+        require("dap").step_over()
       end,
       { desc = "Step over" },
     },
 
     ["<leader>dsi"] = {
       function()
-        require("dap").setp_over()
+        require("dap").step_over()
       end,
       { desc = "Step into" },
     },
 
     ["<leader>dsou"] = {
       function()
-        require("dap").setp_over()
+        require("dap").step_over()
       end,
       { desc = "Step out" },
     },
