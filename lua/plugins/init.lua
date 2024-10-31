@@ -35,6 +35,7 @@ return {
         "fish",
         "dockerfile",
         "python",
+        "rust",
       },
     },
   },
@@ -54,13 +55,6 @@ return {
     ft = {
       "arduino",
     },
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    event = "VeryLazy",
-    opts = function()
-      return require "configs.none-ls"
-    end,
   },
   {
     "folke/noice.nvim",
@@ -91,6 +85,9 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
+    config = function()
+      require "configs.dap"
+    end,
   },
   {
     "stevearc/dressing.nvim",
@@ -108,7 +105,7 @@ return {
       "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
-    config = function(_, opts)
+    config = function(_, _)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
     end,

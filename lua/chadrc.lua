@@ -17,16 +17,22 @@ M.base46 = {
 M.mason = {
   cmd = true,
   pkgs = { -- put your mason packges here
-    "stylua",
-    "rust-analyzer",
-    "clangd",
-    "clang-format",
-    "pyright",
-    "black",
-    "ruff-lsp",
+    "stylua", -- Lua fotmater
+    "rust-analyzer", -- Rust Lsp
+    "clangd", -- CPP LSP
+    "clang-format", -- CPP Formatter
+    "codelldb", -- Debugger
+    "pyright", -- Python Static Type checker
+    "black", -- Python Formatter
+    "python-lsp-server", -- Python LSP
     "debugpy", -- Python Debugger
     "ltex-ls", -- Spelling LSP
     "latexindent", -- LaTeX formatter
+    "yamlfix", -- Yaml Formatter
+    "yaml-language-server", -- Yaml LSP
+    "json-lsp", -- JSON LSP
+    "dockerfile-language-server", -- Dockerfile LSP
+    "docker-compose-language-service", -- Compose LSP
   },
 }
 

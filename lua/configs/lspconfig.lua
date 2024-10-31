@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "clangd" }
+local servers = { "clangd", "dockerls", "docker_compose_language_service", "jsonls", "lua_ls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local mappings = {
@@ -150,10 +150,18 @@ lspconfig.pyright.setup {
   filetypes = { "python" },
 }
 
-lspconfig.ruff_lsp.setup {
+lspconfig.yamlls.setup {
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+      },
+    },
+  },
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "python" },
+  filetypes = { "yaml" },
 }
 
 lspconfig.ltex.setup {

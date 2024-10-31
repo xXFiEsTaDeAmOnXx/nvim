@@ -2,6 +2,10 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     tex = { "latexindent" },
+    yaml = { "yamlfix" },
+    python = { "black" },
+    c = { "clang-format" },
+    cpp = { "clang-format" },
   },
 
   format_on_save = {
