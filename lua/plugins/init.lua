@@ -4,7 +4,13 @@ return {
     event = "BufWritePre",
     opts = require "configs.conform",
   },
-
+  {
+    "folke/neoconf.nvim",
+    lazy = false,
+    config = function()
+      require("neoconf").setup {}
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()
