@@ -19,6 +19,26 @@ return {
     end,
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "lua",
+        "c",
+        "cpp",
+        "markdown",
+        "markdown_inline",
+        "toml",
+        "meson",
+        "make",
+        "hyprlang",
+        "gitignore",
+        "fish",
+        "dockerfile",
+        "python",
+      },
+    },
+  },
+  {
     "lervag/vimtex",
     lazy = false, -- we don't want to lazy load VimTeX
     ft = {
