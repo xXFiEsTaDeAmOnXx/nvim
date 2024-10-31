@@ -2,9 +2,26 @@ require "nvchad.mappings"
 
 -- add yours here
 
-local map = vim.keymap.set
+local mappings = {
+  n = {
+    -- Notifications
+    ["<leader>nd"] = {
+      "<cmd> Noice dismiss <CR>",
+      {
+        desc = "Dismiss all Notifications",
+      },
+    },
+    ["<leader>nt"] = {
+      "<cmd> Noice telescope <CR>",
+      {
+        desc = "Display all Notifications",
+      },
+    },
+  },
+}
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
-
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+for mode, maps in pairs(mappings) do
+  for key, val in pairs(maps) do
+    vim.keymap.set(mode, key, val[1], val[2])
+  end
+end

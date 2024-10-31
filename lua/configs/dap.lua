@@ -16,19 +16,13 @@ dap.adapters.cpp = {
 local debugger_mappings = {
   n = {
     -- LSP Diagnostics
-    ["<leader>do"] = {
+    ["<leader>dt"] = {
       function()
-        require("dapui").open()
+        require("dapui").toggle()
+        require("configs.neotreenormalized").resize()
       end,
-      { desc = "Open DAP-UI" },
+      { desc = "Toogle DAP-UI" },
     },
-    ["<leader>dc"] = {
-      function()
-        require("dapui").close()
-      end,
-      { desc = "Close DAP-UI" },
-    },
-
     ["<leader>db"] = {
       function()
         require("dap").toggle_breakpoint()
