@@ -33,6 +33,8 @@ M.mason = {
     "json-lsp", -- JSON LSP
     "dockerfile-language-server", -- Dockerfile LSP
     "docker-compose-language-service", -- Compose LSP
+    "hyprls", -- Hyprland Lsp
+    "rustfmt",
   },
 }
 

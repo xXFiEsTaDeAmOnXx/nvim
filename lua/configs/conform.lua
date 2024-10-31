@@ -1,3 +1,5 @@
+-- Array of filetypes where autoformat is disabled by default
+
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
@@ -6,13 +8,14 @@ local options = {
     python = { "black" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    rust = { "rustfmt" },
   },
-
-  format_on_save = {
-    --   -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_fallback = true,
-  },
+  format_on_save = function(bufnr)
+    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+      return
+    end
+    return { timeout_ms = 500, lsp_format = false }
+  end,
 }
 
 return options

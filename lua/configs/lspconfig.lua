@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "clangd", "dockerls", "docker_compose_language_service", "jsonls", "lua_ls" }
+local servers = { "clangd", "dockerls", "docker_compose_language_service", "jsonls", "lua_ls", "hyprls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local mappings = {
