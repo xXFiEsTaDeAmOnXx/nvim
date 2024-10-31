@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "clangd", "dockerls", "docker_compose_language_service", "jsonls", "lua_ls", "hyprls" }
+local servers = { "clangd", "dockerls", "docker_compose_language_service", "jsonls", "lua_ls", "hyprls", "pyright" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local mappings = {
@@ -143,11 +143,19 @@ lspconfig.clangd.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-
-lspconfig.pyright.setup {
+lspconfig.pylsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "python" },
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { "W391" },
+          maxLineLength = 150,
+        },
+      },
+    },
+  },
 }
 
 lspconfig.yamlls.setup {
