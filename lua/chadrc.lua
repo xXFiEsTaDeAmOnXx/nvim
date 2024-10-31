@@ -35,7 +35,7 @@ M.mason = {
     "dockerfile-language-server", -- Dockerfile LSP
     "docker-compose-language-service", -- Compose LSP
     "hyprls", -- Hyprland Lsp
-    "rustfmt",
+    "rustfmt", --rust Formater
   },
 }
 
