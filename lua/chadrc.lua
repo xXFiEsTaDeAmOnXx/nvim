@@ -24,6 +24,7 @@ M.mason = {
     "codelldb", -- Debugger
     "pyright", -- Python Static Type checker
     "black", -- Python Formatter
+    "isort", -- Python input Formater
     "python-lsp-server", -- Python LSP
     "debugpy", -- Python Debugger
     "ltex-ls", -- Spelling LSP
