@@ -19,7 +19,7 @@ local debugger_mappings = {
     ["<leader>dt"] = {
       function()
         require("dapui").toggle()
-        require("configs.neotreenormalized").resize()
+        require("nvim-tree.api").tree.resize { width = 30 }
       end,
       { desc = "Toogle DAP-UI" },
     },

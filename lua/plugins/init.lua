@@ -130,14 +130,17 @@ return {
       local dap = require "dap"
       local dapui = require "dapui"
       dapui.setup()
+
       dap.listeners.after.event_initialized["dapui_config"] = function()
-        require("configs.neotreenormalized").resize()
+        dapui.open()
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
-        require("configs.neotreenormalized").resize()
+        dapui.close()
+        require("nvim-tree.api").tree.resize { width = 30 } -- hacky approach to fix nvim-tree size
       end
       dap.listeners.before.event_exited["dapui_config"] = function()
-        require("configs.neotreenormalized").resize()
+        dapui.close()
+        require("nvim-tree.api").tree.resize { width = 30 }
       end
     end,
   },
