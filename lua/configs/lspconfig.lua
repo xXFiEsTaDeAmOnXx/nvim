@@ -172,10 +172,13 @@ lspconfig.yamlls.setup {
   filetypes = { "yaml" },
 }
 
+local config_path = vim.fn.stdpath "config"
 lspconfig.ltex.setup {
   settings = {
     ltex = {
       language = "en-US",
+      checkFrequency = "save",
+      completionEnabled = true,
     },
   },
   on_attach = function(client, bufnr)
@@ -209,6 +212,7 @@ lspconfig.ltex.setup {
         vim.keymap.set(mode, key, val[1], key_opts)
       end
     end
-    nvlsp.on_attach(client, bufnr)
+
+    on_attach(client, bufnr)
   end,
 }
