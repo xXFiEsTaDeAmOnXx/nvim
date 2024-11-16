@@ -1,7 +1,6 @@
 require "nvchad.options"
 
-vim.opt.spelllang = "de,en"
-vim.opt.spell = true
+vim.opt.spell = false
 
 -- Command to disable formatting
 vim.api.nvim_create_user_command("FormatDisable", function(args)

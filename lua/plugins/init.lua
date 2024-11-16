@@ -145,6 +145,12 @@ return {
     end,
   },
   {
+    "Skydeke/ltex-ls.nvim",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+  },
+  {
     "jay-babu/mason-nvim-dap.nvim",
     event = "VeryLazy",
     dependencies = {
