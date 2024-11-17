@@ -14,10 +14,10 @@ M.base46 = {
   -- },
 
   hl_add = { -- add highlights to use for vimtex status
-    St_vtexInfo = { fg = "#61afef", bg = "NONE" },
-    St_vtexIdle = { fg = "#b294bb", bg = "NONE" },
-    St_vtexSuccess = { fg = "#98c379", bg = "NONE" },
-    St_vtexError = { fg = "#e06c75", bg = "NONE" },
+    St_vtexInfo = { fg = "#61afef" },
+    St_vtexIdle = { fg = "#b294bb" },
+    St_vtexSuccess = { fg = "#98c379" },
+    St_vtexError = { fg = "#e06c75" },
   },
 }
 
