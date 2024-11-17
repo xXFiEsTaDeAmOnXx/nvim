@@ -177,9 +177,10 @@ local config_path = vim.fn.stdpath "config"
 ltex_config = {
   settings = {
     ltex = {
-      language = "en-US",
+      language = "auto",
       checkFrequency = "save",
       completionEnabled = true,
+      enabled = { "latex", "tex", "bib", "markdown" },
       dictionary = (function()
         -- For dictionary, search for files in the runtime to have
         -- and include them as externals the format for them is
@@ -246,4 +247,5 @@ require("ltex-ls").setup {
   capabilities = capabilities,
   on_attach = ltex_config.on_attach,
   settings = ltex_config.settings,
+  filetypes = { "latex", "tex" },
 }
