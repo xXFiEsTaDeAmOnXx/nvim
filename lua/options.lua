@@ -38,3 +38,20 @@ vim.filetype.add {
     ["docker-compose.yml"] = "yaml.docker-compose", -- handle both extensions
   },
 }
+
+local lint_timer = vim.loop.new_timer()
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold" }, {
+  callback = function()
+    require("lint").try_lint()
+    -- Stop any previously scheduled linting
+    lint_timer:stop()
+    -- Schedule linting to run after 2 seconds of inactivity
+    lint_timer:start(
+      2000,
+      0,
+      vim.schedule_wrap(function()
+        require("lint").try_lint()
+      end)
+    )
+  end,
+})

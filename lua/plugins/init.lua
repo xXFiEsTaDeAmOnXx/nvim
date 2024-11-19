@@ -210,4 +210,10 @@ return {
       hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" }, -- render image files as images when opened
     },
   },
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      require "configs.linter"
+    end,
+  },
 }
