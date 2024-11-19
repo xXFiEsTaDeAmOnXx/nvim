@@ -66,6 +66,7 @@ return {
   },
   {
     "mfussenegger/nvim-lint",
+    ft = { "tex" },
     config = function()
       require "configs.linter"
     end,
