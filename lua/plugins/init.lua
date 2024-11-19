@@ -35,8 +35,18 @@ return {
         "dockerfile",
         "python",
         "rust",
+        "latex",
       },
     },
+    config = function(_, opts)
+      local mason_bin_path = vim.fn.stdpath "data" .. "/mason/bin"
+      if vim.loop.os_uname().sysname == "Windows_NT" then
+        vim.env.PATH = mason_bin_path .. ";" .. vim.env.PATH
+      else
+        vim.env.PATH = mason_bin_path .. ":" .. vim.env.PATH
+      end
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
   {
     "lervag/vimtex",
@@ -48,6 +58,25 @@ return {
     init = function()
       require "configs.vimtex"
     end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "vimtex" },
+        { name = "path" },
+        { name = "buffer" },
+      },
+    },
+    dependencies = {
+      "hrsh7th/cmp-buffer", -- source for text in buffer
+      "hrsh7th/cmp-path", -- source for file system path
+      "hrsh7th/cmp-nvim-lsp", -- using LSP for source
+      "L3MON4D3/LuaSnip", -- snippet engine
+      "saadparwaiz1/cmp_luasnip", -- using LuaSnip for source
+      "micangl/cmp-vimtex", -- source of vimtex for latex
+    },
   },
   {
     "stevearc/vim-arduino",

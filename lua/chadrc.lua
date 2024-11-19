@@ -32,15 +32,16 @@ M.ui = {
           local status = vim.b.vimtex.compiler.status + 2
 
           local symbols_and_colors = { -- use highlights specifiged ad the top and symbol
-            { "[⏻] ", "%#St_vtexInfo#" },
-            { "[⏻] ", "%#St_vtexInfo#" },
-            { "[⟳] ", "%#St_vtexIdle#" },
-            { "[✔︎] ", "%#St_vtexSuccess#" },
-            { "[✖] ", "%#St_vtexError#" },
+            { " ", "%#St_vtexInfo#", "Idle" },
+            { " ", "%#St_vtexInfo#", "Idle" }, -- Info (e.g., compiling)
+            { " ", "%#St_vtexIdle#", "Compiling" }, -- Idle (e.g., waiting for input)
+            { " ", "%#St_vtexSuccess#", "Done" }, -- Success (e.g., completed successfully)
+            { " ", "%#St_vtexError#", "Error" }, -- Error (e.g., failure)
           }
           local status_symbol = symbols_and_colors[status][1]
           local color = symbols_and_colors[status][2]
-          return color .. status_symbol -- parse color string toghter to get specified color
+          local mes = symbols_and_colors[status][3]
+          return color .. status_symbol .. " " .. mes -- parse color string toghter to get specified color
         end
         return ""
       end,
@@ -70,6 +71,7 @@ M.mason = {
     "docker-compose-language-service", -- Compose LSP
     "hyprls", -- Hyprland Lsp
     "rustfmt", --rust Formater
+    "tree-sitter-cli",
   },
 }
 
