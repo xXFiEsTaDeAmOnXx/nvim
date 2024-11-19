@@ -52,6 +52,7 @@ M.ui = {
 M.mason = {
   cmd = true,
   pkgs = { -- put your mason packges here
+    "lua-language-server", -- Language sever for lua
     "stylua", -- Lua fotmater
     "rust-analyzer", -- Rust Lsp
     "clangd", -- CPP LSP
