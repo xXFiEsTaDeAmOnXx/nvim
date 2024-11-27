@@ -176,6 +176,20 @@ lspconfig.ltex.setup {
   settings = {
     ltex = {
       language = "en-US",
+      enabled = {
+        "bibtex",
+        "gitcommit",
+        "markdown",
+        "org",
+        "tex",
+        "restructuredtext",
+        "latex",
+        "context",
+        "mail",
+        "plaintext",
+      },
+      checkFrequency = "save",
+      completionEnabled = true,
     },
   },
   on_attach = function(client, bufnr)
