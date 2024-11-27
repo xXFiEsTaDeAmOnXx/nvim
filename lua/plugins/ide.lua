@@ -84,10 +84,4 @@ return {
       "arduino",
     },
   },
-  {
-    "Skydeke/ltex-ls.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-  },
 }
