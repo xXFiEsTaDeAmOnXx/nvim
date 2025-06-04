@@ -84,4 +84,8 @@ return {
       "arduino",
     },
   },
+  {
+    "towolf/vim-helm",
+    ft = { "helm" },
+  },
 }

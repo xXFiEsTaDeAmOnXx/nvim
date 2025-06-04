@@ -73,6 +73,7 @@ M.mason = {
     "hyprls", -- Hyprland Lsp
     "rustfmt", --rust Formater
     "tree-sitter-cli",
+    "helm-ls",
   },
 }
 

@@ -139,20 +139,11 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
-lspconfig.clangd.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-lspconfig.pylsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+lspconfig.helm_ls.setup {
   settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = { "W391" },
-          maxLineLength = 150,
-        },
+    ["helm-ls"] = {
+      yamlls = {
+        path = "yaml-language-server",
       },
     },
   },
@@ -170,6 +161,25 @@ lspconfig.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "yaml" },
+}
+
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+lspconfig.pylsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { "W391" },
+          maxLineLength = 150,
+        },
+      },
+    },
+  },
 }
 
 lspconfig.ltex.setup {
