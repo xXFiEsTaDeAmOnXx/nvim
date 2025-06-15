@@ -200,6 +200,8 @@ lspconfig.ltex.setup {
       },
       checkFrequency = "save",
       completionEnabled = true,
+      diagnosticSeverity = "information",
+      enablePickyRules = true,
     },
   },
   on_attach = function(client, bufnr)
@@ -233,6 +235,12 @@ lspconfig.ltex.setup {
         vim.keymap.set(mode, key, val[1], key_opts)
       end
     end
+
     on_attach(client, bufnr)
+
+    require("ltex_extra").setup { --client-side features of nvim
+      load_langs = { "de-DE", "en-US" },
+      path = ".ltex",
+    }
   end,
 }

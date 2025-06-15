@@ -69,6 +69,9 @@ return {
         { name = "buffer" },
       },
     },
+    experimental = {
+      ghost_text = true, --enable ghost_text
+    },
     dependencies = {
       "hrsh7th/cmp-buffer", -- source for text in buffer
       "hrsh7th/cmp-path", -- source for file system path
@@ -87,5 +90,11 @@ return {
   {
     "towolf/vim-helm",
     ft = { "helm" },
+  },
+
+  {
+    "barreiroleo/ltex_extra.nvim",
+    ft = { "markdown", "tex" },
+    dependencies = { "neovim/nvim-lspconfig" },
   },
 }

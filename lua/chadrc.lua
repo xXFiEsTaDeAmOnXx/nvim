@@ -74,6 +74,7 @@ M.mason = {
     "rustfmt", --rust Formater
     "tree-sitter-cli",
     "helm-ls",
+    "bibtex-tidy",
   },
 }
 
