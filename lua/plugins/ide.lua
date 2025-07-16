@@ -97,4 +97,15 @@ return {
     ft = { "markdown", "tex" },
     dependencies = { "neovim/nvim-lspconfig" },
   },
+  {
+    "EthanJWright/vs-tasks.nvim",
+    dependencies = {
+      "nvim-lua/popup.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("configs.vstask").setup()
+    end,
+  },
 }

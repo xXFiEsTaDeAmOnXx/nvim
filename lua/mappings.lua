@@ -17,6 +17,32 @@ local mappings = {
         desc = "Display all Notifications",
       },
     },
+
+    -- VS Tasks
+    ["<leader>tva"] = {
+      "<cmd>lua require('configs.vstask').show_tasks()<CR>",
+      {
+        desc = "Show tasks",
+      },
+    },
+    ["<leader>tvi"] = {
+      "<cmd>lua require('configs.vstask').show_inputs()<CR>",
+      {
+        desc = "Task inputs",
+      },
+    },
+    ["<leader>tvj"] = {
+      "<cmd>lua require('configs.vstask').show_jobs()<CR>",
+      {
+        desc = "View jobs",
+      },
+    },
+    ["<leader>tvr"] = {
+      "<cmd>lua require('telescope').extensions.vstask.run()<CR>",
+      {
+        desc = "Run command",
+      },
+    },
   },
 }
 
