@@ -14,4 +14,15 @@ return {
       require "configs.neotest"
     end,
   },
+
+  {
+    "andythigpen/nvim-coverage",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    ft = { "python" },
+    config = function()
+      require("coverage").setup()
+    end,
+  },
 }
