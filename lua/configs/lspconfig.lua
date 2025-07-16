@@ -201,7 +201,9 @@ lspconfig.ltex.setup {
       checkFrequency = "save",
       completionEnabled = true,
       diagnosticSeverity = "information",
-      enablePickyRules = true,
+      additionalRules = {
+        enablePickyRules = true,
+      },
     },
   },
   on_attach = function(client, bufnr)
