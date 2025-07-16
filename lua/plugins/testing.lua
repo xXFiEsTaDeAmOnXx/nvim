@@ -22,7 +22,7 @@ return {
     },
     ft = { "python" },
     config = function()
-      require("coverage").setup()
+      require "configs.coverage"
     end,
   },
 }
