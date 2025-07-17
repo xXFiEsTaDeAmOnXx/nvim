@@ -113,7 +113,6 @@ capabilities.textDocument.completion.completionItem = {
     },
   },
 }
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
