@@ -3,7 +3,8 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "clangd", "dockerls", "docker_compose_language_service", "jsonls", "lua_ls", "hyprls", "pyright" }
+local default_servers =
+  { "clangd", "dockerls", "docker_compose_language_service", "jsonls", "lua_ls", "hyprls", "pyright" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local mappings = {
@@ -100,148 +101,132 @@ local on_attach = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
 end
 
--- Snippet, autocompletion support
-local capabilities = nvlsp.capabilities
-capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  },
-}
+-- change keybinds on attach
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    on_attach(_, args.buf)
+  end,
+})
 
 -- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = capabilities,
-  }
+for _, lsp in ipairs(default_servers) do
+  vim.lsp.enable(lsp)
 end
 
--- configuring single server
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "rust" },
-  root_dir = lspconfig.util.root_pattern "Cargo.toml",
-  settings = {
-    ["rust_analyzer"] = {
-      cargo = {
-        allFeatures = true,
+local server_configs = {
+  ["rust_analyzer"] = {
+    filetypes = { "rust" },
+    root_dir = lspconfig.util.root_pattern "Cargo.toml",
+    settings = {
+      ["rust_analyzer"] = {
+        cargo = {
+          allFeatures = true,
+        },
       },
     },
   },
-}
 
-lspconfig.helm_ls.setup {
-  settings = {
-    ["helm-ls"] = {
-      yamlls = {
-        path = "yaml-language-server",
+  ["helm-ls"] = {
+    settings = {
+      ["helm-ls"] = {
+        yamlls = {
+          path = "yaml-language-server",
+        },
       },
     },
   },
-}
 
-lspconfig.yamlls.setup {
-  settings = {
-    yaml = {
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+  ["yamlls"] = {
+    filetypes = { "yaml" },
+    settings = {
+      yaml = {
+        schemas = {
+          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+        },
       },
     },
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "yaml" },
-}
+  ["pylsp"] = {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            ignore = { "W391" },
+            maxLineLength = 150,
+          },
+        },
+      },
+    },
+  },
 
-lspconfig.clangd.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-lspconfig.pylsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = { "W391" },
-          maxLineLength = 150,
+  ["ltex"] = {
+    settings = {
+      ltex = {
+        language = "en-US",
+        enabled = {
+          "bibtex",
+          "gitcommit",
+          "markdown",
+          "org",
+          "tex",
+          "restructuredtext",
+          "latex",
+          "context",
+          "mail",
+          "plaintext",
+        },
+        checkFrequency = "save",
+        completionEnabled = true,
+        diagnosticSeverity = "information",
+        additionalRules = {
+          enablePickyRules = true,
         },
       },
     },
-  },
-}
-
-lspconfig.ltex.setup {
-  settings = {
-    ltex = {
-      language = "en-US",
-      enabled = {
-        "bibtex",
-        "gitcommit",
-        "markdown",
-        "org",
-        "tex",
-        "restructuredtext",
-        "latex",
-        "context",
-        "mail",
-        "plaintext",
-      },
-      checkFrequency = "save",
-      completionEnabled = true,
-      diagnosticSeverity = "information",
-      additionalRules = {
-        enablePickyRules = true,
-      },
-    },
-  },
-  on_attach = function(client, bufnr)
-    -- Mappings
-    local ltex_mappings = {
-      n = {
-        -- LSP Diagnostics
-        ["<leader>ll"] = {
-          "<cmd> VimtexCompile <CR>",
-          { desc = "Start LaTeX Compiler" },
+    on_attach = function(client, bufnr)
+      -- Mappings
+      local ltex_mappings = {
+        n = {
+          -- LSP Diagnostics
+          ["<leader>ll"] = {
+            "<cmd> VimtexCompile <CR>",
+            { desc = "Start LaTeX Compiler" },
+          },
+          ["<leader>lo"] = {
+            "<cmd> VimtexCompileOutput <CR>",
+            { desc = "Show Compiler Output" },
+          },
+          ["<leader>le"] = {
+            "<cmd> VimtexErrors <CR>",
+            { desc = "Start LaTeX Compiler" },
+          },
+          ["<leader>lv"] = {
+            "<cmd> VimtexView <CR>",
+            { desc = "Start LaTeX Compiler" },
+          },
         },
-        ["<leader>lo"] = {
-          "<cmd> VimtexCompileOutput <CR>",
-          { desc = "Show Compiler Output" },
-        },
-        ["<leader>le"] = {
-          "<cmd> VimtexErrors <CR>",
-          { desc = "Start LaTeX Compiler" },
-        },
-        ["<leader>lv"] = {
-          "<cmd> VimtexView <CR>",
-          { desc = "Start LaTeX Compiler" },
-        },
-      },
-    }
-    local opts = { buffer = bufnr, silent = true }
-    for mode, maps in pairs(ltex_mappings) do
-      for key, val in pairs(maps) do
-        -- Merge opts with the keymap options
-        local key_opts = vim.tbl_extend("force", opts, val[2] or {})
-        vim.keymap.set(mode, key, val[1], key_opts)
+      }
+      local opts = { buffer = bufnr, silent = true }
+      for mode, maps in pairs(ltex_mappings) do
+        for key, val in pairs(maps) do
+          -- Merge opts with the keymap options
+          local key_opts = vim.tbl_extend("force", opts, val[2] or {})
+          vim.keymap.set(mode, key, val[1], key_opts)
+        end
       end
-    end
 
-    on_attach(client, bufnr)
+      on_attach(client, bufnr)
 
-    require("ltex_extra").setup { --client-side features of nvim
-      load_langs = { "de-DE", "en-US" },
-      path = ".ltex",
-    }
-  end,
+      require("ltex_extra").setup { --client-side features of nvim
+        load_langs = { "de-DE", "en-US" },
+        path = ".ltex",
+      }
+    end,
+  },
 }
+
+for lsp, config in pairs(server_configs) do
+  vim.lsp.config(lsp, config)
+  vim.lsp.enable(lsp)
+end
