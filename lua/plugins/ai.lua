@@ -73,7 +73,8 @@ return {
       -- Default keymaps for CodeCompanion
       { "<leader>ci", "<cmd>'<,'>CodeCompanion<CR>", mode = { "v" }, desc = "Open CodeCompanion Inline" },
       { "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Open CodeCompanion Chat" },
-      { "<leader>ca", "<cmd>CodeCompanionActions<CR>", desc = "Open CodeCompanion Actions" },
+      { "<leader>ca", "<cmd><,'>CodeCompanionActions<CR>", mode = { "i" }, desc = "Open CodeCompanion Actions" },
+      { "<leader>ca", "<cmd>CodeCompanionActions<CR>", mode = { "v" }, desc = "Open CodeCompanion Actions" },
       { "<leader>ct", "<cmd>CodeCompanionCmd<CR>", desc = "Open Tools" },
     },
   },
