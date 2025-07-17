@@ -87,4 +87,8 @@ return {
       }
     end,
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "codecompanion" },
+  },
 }
