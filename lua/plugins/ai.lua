@@ -71,7 +71,7 @@ return {
     end,
     keys = {
       -- Default keymaps for CodeCompanion
-      { "<leader>ci", "<cmd>CodeCompanion<CR>", desc = "Open CodeCompanion Inline" },
+      { "<leader>ci", "<cmd>'<,'>CodeCompanion<CR>", mode = { "v" }, desc = "Open CodeCompanion Inline" },
       { "<leader>cc", "<cmd>CodeCompanionChat<CR>", desc = "Open CodeCompanion Chat" },
       { "<leader>ca", "<cmd>CodeCompanionActions<CR>", desc = "Open CodeCompanion Actions" },
       { "<leader>ct", "<cmd>CodeCompanionCmd<CR>", desc = "Open Tools" },
