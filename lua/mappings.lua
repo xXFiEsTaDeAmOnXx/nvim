@@ -43,6 +43,42 @@ local mappings = {
         desc = "Run command",
       },
     },
+    ["<C-i>"] = {
+      function()
+        require("nvchad.term").toggle {
+          pos = "float",
+          id = "floatTerm",
+          float_opts = {
+            row = 0.35,
+            col = 0.05,
+            width = 0.9,
+            height = 0.5,
+          },
+        }
+      end,
+      {
+        desc = "Toggle floating terminal",
+      },
+    },
+  },
+  t = {
+    ["<C-t>"] = {
+      function()
+        require("nvchad.term").toggle {
+          pos = "float",
+          id = "floatTerm",
+          float_opts = {
+            row = 0.35,
+            col = 0.05,
+            width = 0.9,
+            height = 0.5,
+          },
+        }
+      end,
+      {
+        desc = "Toggle floating terminal",
+      },
+    },
   },
 }
 
