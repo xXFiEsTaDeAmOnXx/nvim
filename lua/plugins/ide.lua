@@ -91,7 +91,7 @@ return {
         },
         list = {
           selection = {
-            preselect = true,
+            preselect = false,
             auto_insert = false,
           },
         },
@@ -126,7 +126,7 @@ return {
       },
       -- Experimental signature help support
       signature = {
-        enabled = true,
+        enabled = false,
         window = { border = "rounded" },
       },
     },
