@@ -43,7 +43,7 @@ local mappings = {
         desc = "Run command",
       },
     },
-    ["<C-i>"] = {
+    ["<C-t>"] = {
       function()
         require("nvchad.term").toggle {
           pos = "float",
