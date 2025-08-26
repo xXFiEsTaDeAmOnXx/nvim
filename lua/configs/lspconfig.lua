@@ -224,6 +224,9 @@ local server_configs = {
       }
     end,
   },
+  ["qmlls"] = {
+    cmd = { "qmlls" },
+  },
 }
 
 for lsp, config in pairs(server_configs) do

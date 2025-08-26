@@ -9,6 +9,7 @@ local options = {
     c = { "clang-format" },
     cpp = { "clang-format" },
     rust = { "rustfmt" },
+    qml = { "qmlformat" },
     -- bib = { "bibtex-tidy" },
   },
   format_on_save = function(bufnr)
