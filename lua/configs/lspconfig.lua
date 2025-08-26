@@ -116,7 +116,6 @@ end
 local server_configs = {
   ["rust_analyzer"] = {
     filetypes = { "rust" },
-    root_dir = lspconfig.util.root_pattern "Cargo.toml",
     settings = {
       ["rust_analyzer"] = {
         cargo = {
