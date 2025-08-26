@@ -29,9 +29,9 @@ return {
           opts = {
             allow_insecure = true,
           },
-          ["qwen2.5:7b_ollama"] = function()
+          ["gpt-oss:20b_ollama"] = function()
             return require("codecompanion.adapters").extend("ollama", {
-              name = "qwen2.5:7b_ollama",
+              name = "gpt-oss:20b",
               env = {
                 url = "http://localhost:11434",
               },
@@ -44,7 +44,33 @@ return {
               },
               schema = {
                 model = {
-                  default = "qwen2.5:7b",
+                  default = "gpt-oss:20b",
+                },
+                num_ctx = {
+                  default = 16384,
+                },
+                num_predict = {
+                  default = -1,
+                },
+              },
+            })
+          end,
+          ["qwen3-coder:30b_ollama"] = function()
+            return require("codecompanion.adapters").extend("ollama", {
+              name = "qwen3-coder:30b",
+              env = {
+                url = "http://localhost:11434",
+              },
+              -- headers = {
+              --   ["Content-Type"] = "application/json",
+              --   ["Authorization"] = "Bearer ${api_key}",
+              -- },
+              parameters = {
+                sync = true,
+              },
+              schema = {
+                model = {
+                  default = "qwen3-coder:30b",
                 },
                 num_ctx = {
                   default = 16384,
@@ -58,13 +84,13 @@ return {
         },
         strategies = {
           chat = {
-            adapter = "qwen2.5:7b_ollama",
+            adapter = "qwen3-coder:30b_ollama",
           },
           inline = {
-            adapter = "qwen2.5:7b_ollama",
+            adapter = "qwen3-coder:30b_ollama",
           },
           agent = {
-            adapter = "qwen2.5:7b_ollama",
+            adapter = "qwen3-coder:30b_ollama",
           },
         },
       }
