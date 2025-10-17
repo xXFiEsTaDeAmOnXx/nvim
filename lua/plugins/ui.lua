@@ -39,22 +39,6 @@ return {
     },
   },
   {
-    "sindrets/diffview.nvim",
-    cmd = {
-      "DiffviewClose",
-      "DiffviewFileHistory",
-      "DiffviewFocusFiles",
-      "DiffviewLog",
-      "DiffviewOpen",
-      "DiffviewRefresh",
-      "DiffviewToggleFiles",
-    },
-    dependencies = {},
-    config = function()
-      require "configs.diffview"
-    end,
-  },
-  {
     "mfussenegger/nvim-lint",
     ft = { "tex" },
     config = function()
