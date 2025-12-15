@@ -71,7 +71,6 @@ M.mason = {
     "dockerfile-language-server", -- Dockerfile LSP
     "docker-compose-language-service", -- Compose LSP
     "hyprls", -- Hyprland Lsp
-    "tree-sitter-cli",
     "helm-ls",
     "bibtex-tidy",
     "qmlls", -- QML LSP
