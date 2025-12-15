@@ -8,11 +8,11 @@ vim.o.foldlevel = 99 -- Start with all folds open
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
-    if require("nvim-treesitter.parsers").has_parser() then
-      vim.o.foldmethod = "expr"
-      vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+    if pcall(vim.treesitter.get_parser) then
+      vim.opt_local.foldmethod = "expr"
+      vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
     else
-      vim.o.foldmethod = "syntax"
+      vim.opt_local.foldmethod = "syntax"
     end
   end,
 })
