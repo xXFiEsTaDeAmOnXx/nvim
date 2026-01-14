@@ -159,7 +159,7 @@ local server_configs = {
     },
   },
 
-  ["ltex"] = {
+  ["ltex_plus"] = {
     settings = {
       ltex = {
         language = "en-US",
