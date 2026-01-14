@@ -63,7 +63,7 @@ M.mason = {
     "isort", -- Python input Formater
     "python-lsp-server", -- Python LSP
     "debugpy", -- Python Debugger
-    "ltex-ls", -- Spelling LSP
+    "ltex-ls-plus", -- Spelling LSP
     "latexindent", -- LaTeX formatter
     "yamlfix", -- Yaml Formatter
     "yaml-language-server", -- Yaml LSP
