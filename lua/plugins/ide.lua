@@ -19,6 +19,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     opts = {
       ensure_installed = {
         "lua",
@@ -37,14 +38,13 @@ return {
         "rust",
       },
     },
-    config = function(_, opts)
+    config = function()
       local mason_bin_path = vim.fn.stdpath "data" .. "/mason/bin"
       if vim.loop.os_uname().sysname == "Windows_NT" then
         vim.env.PATH = mason_bin_path .. ";" .. vim.env.PATH
       else
         vim.env.PATH = mason_bin_path .. ":" .. vim.env.PATH
       end
-      require("nvim-treesitter.configs").setup(opts)
     end,
   },
   {

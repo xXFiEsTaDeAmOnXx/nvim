@@ -74,6 +74,7 @@ M.mason = {
     "helm-ls",
     "bibtex-tidy",
     "qmlls", -- QML LSP
+    "tree-sitter-cli",
   },
 }
 

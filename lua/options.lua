@@ -7,17 +7,6 @@ vim.o.foldenable = false -- Dont fold on File-Open
 vim.o.foldlevel = 99 -- Start with all folds open
 vim.o.textwidth = 110
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  callback = function()
-    if pcall(vim.treesitter.get_parser) then
-      vim.opt_local.foldmethod = "expr"
-      vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    else
-      vim.opt_local.foldmethod = "syntax"
-    end
-  end,
-})
-
 -- Command to disable formatting
 vim.api.nvim_create_user_command("FormatDisable", function(args)
   if args.bang then
