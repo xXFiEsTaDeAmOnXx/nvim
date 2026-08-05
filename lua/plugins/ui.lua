@@ -32,13 +32,6 @@ return {
     },
   },
   {
-    "folke/snacks.nvim", -- plugin to visulize iamges
-    event = "VeryLazy",
-    opts = {
-      image = {},
-    },
-  },
-  {
     "mfussenegger/nvim-lint",
     ft = { "tex" },
     config = function()
