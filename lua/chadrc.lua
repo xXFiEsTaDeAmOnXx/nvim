@@ -64,7 +64,7 @@ M.mason = {
     "python-lsp-server", -- Python LSP
     "debugpy", -- Python Debugger
     "ltex-ls-plus", -- Spelling LSP
-    "latexindent", -- LaTeX formatter
+    "tex-fmt", -- LaTeX formatter
     "yamlfix", -- Yaml Formatter
     "yaml-language-server", -- Yaml LSP
     "json-lsp", -- JSON LSP

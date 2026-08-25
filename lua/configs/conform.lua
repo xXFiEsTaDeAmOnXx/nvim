@@ -3,14 +3,13 @@
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
-    tex = { "latexindent" },
+    tex = { "tex-fmt" },
     yaml = { "yamlfix" },
     python = { "black", "isort" },
     c = { "clang-format" },
     cpp = { "clang-format" },
-    rust = { "rustfmt" },
     qml = { "qmlformat" },
-    -- bib = { "bibtex-tidy" },
+    bib = { "bibtex-tidy" },
   },
   format_on_save = function(bufnr)
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
